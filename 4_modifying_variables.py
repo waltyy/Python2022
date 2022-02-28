@@ -24,3 +24,11 @@ print("Buying pants")
 money = money - pants
 print("This is what you have left")
 print(money)
+print("Buying a belt")
+money = money - belt
+print("This is what you have left")
+print(money)
+print("Buying some shoes")
+money = money - shoes
+print("This is what you have left")
+print(money)

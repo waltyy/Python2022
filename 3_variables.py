@@ -19,14 +19,24 @@ print(age)
 #Print out the current year, using the variable.
 print(year)
 #Create a variable to store your surname
-
+surname = "De Silva"
 #Create a variable to store the name of your School.
+school_name = "Kings High School"
 #Create a variable that stores your favourite food
+favourite_food = "Pizza"
 #Create a variable that stores your pet name (or an animal’s name)
+animal_name = "Dog"
 #Create a variable that keeps track of how many blocks of chocolate you have
+chocolate_blocks = 4
 #Create a variable that keeps track of a player’s score
+player_score = 200
 #Create a variable that keeps track of a player’s highest score
-#Create a variable that keeps track of the number of laps completed in aracing game
+player_highscore = 600
+#Create a variable that keeps track of the number of laps completed in racing game
+laps = 3
 #Create a variable that keeps track of ammunition left in a shooting game
+ammunition = 30
 #Create a variable that stores the value of the current gear, in a racing game
+car_gear = 3
 #Create a variable that keeps track of the player’s current speed in a racing game.
+player_speed = 200
