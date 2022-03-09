@@ -1,3 +1,4 @@
+
 #Write a list of the first 10 numbers in the Fibonacci sequence (google them if you need to). Print the list out
 fibonacci = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
 print(fibonacci)
@@ -53,4 +54,7 @@ print(prime)
 prime.reverse()
 print(prime)
 #Create a list of common verbs. Sort the list. Print the list out.
-verbs = ["be","have","do","say,"","make"goknowtakeseecomethinklookwantgiveusefindtellaskworkseemfeeltryleavecall]
+verbs = ["be","have","do","say,","make","go","know","take","see","come","think","look","want","give","use","find","tell","ask","work","seem","feel","try","leave","call"]
+print(verbs)
+verbs.sort()
+print(verbs)
