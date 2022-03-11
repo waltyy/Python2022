@@ -6,11 +6,13 @@ print("Hi, welcome to Ice Cream Maker")
 order_complete = False
 toppings_list = []
 topping_count = 0
+toppings_avaliable = ["vanilla","starwberry","chocolate","sprinkles","nuts","raisins","chocolate sauce","flake","m&ms"]
 
 #the loop begins here and will complete
 #when order_complete is no longer false
-while order_complete == False:
+while order_complete == False and topping_count <= 6:
 	topping = input("What topping? - push enter to finish\n")
+	print(toppings_avaliable)
 	if topping == "": #if the user pushes enter, the order is done
 		print("Order Done")
 		
