@@ -38,7 +38,7 @@ quaters.items.add(note)
 #variables
 current_room = space
 inventory = Bag()
-body_-searched = False
+body_searched = False
 used_keycard = False
 
 #binds
@@ -107,7 +107,7 @@ def check_inventory():
 @when("look at body")
 def search_body():
 	global body_searched
-	if current_room == bridge and body_searched == False
+	if current_room == bridge and body_searched == False:
 		print("you search the body and a red keycard falls to the floor")
 		current_room.items.add(keycard)
 		body_searched = True

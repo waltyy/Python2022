@@ -10,14 +10,14 @@ from adventurelib import *
 ################
 
 start_room = Room("You wake in a dark farm, you can only walk forward")
-chicken = Room("You are in a chicken coup, there are 4 exits. You hear spining blades infront of you")
-beet = Room("You are in a beet farm, there are 3 exits")
-potato = Room("You are in a potato farm, there are 3 exits. You hear spining blades to the left of you")
-cow = Room("You are in a cow barn, there are 2 exits")
-pig = Room("You are in a pigsty, there are 2 exits. You hear spining blades to the left of you")
-gen_1 = Room("You are the first generator room, there are 2 exits. You hear spining blades infront of you")
-gen_2 = Room("You are the second generator room, there are 2 exits")
-gen_3 = Room("You are the third generator room, there are 2 exits. You hear spining blades infront of you")
+chicken = Room("You are in a chicken coup, there are 4 exits. You hear spining blades infront of you. Type “look“ to look for exits")
+beet = Room("You are in a beet farm, there are 3 exits. Type “look“ to look for exits")
+potato = Room("You are in a potato farm, there are 3 exits. You hear spining blades to the left of you. Type “look“ to look for exits")
+cow = Room("You are in a cow barn, there are 2 exits. Type “look“ to look for exits")
+pig = Room("You are in a pigsty, there are 2 exits. You hear spining blades to the left of you. Type “look“ to look for exits")
+gen_1 = Room("You are the first generator room, there are 2 exits. You hear spining blades infront of you. Type “look“ to look for exits")
+gen_2 = Room("You are the second generator room, there are 2 exits. Type “look“ to look for exits")
+gen_3 = Room("You are the third generator room, there are 2 exits. You hear spining blades infront of you. Type “look“ to look for exits")
 death_chicken = Room("You have run into spinning blades. You have died!")
 death_gen_1 = Room("You have run into spinning blades. You have died!")
 death_gen_3 = Room("You have run into spinning blades. You have died!")
@@ -44,6 +44,9 @@ pig.west = death_gen_3
 #DEFINE ITEMS
 ################
 
+Item.description = ""
+
+lever_1 = Item
 ################
 #DEFINE BAGS
 ################
@@ -80,18 +83,22 @@ def jump():
 
 @when("go DIRECTION")
 @when("travel DIRECTION")
-@when("DIRECTION")
+@when("e",direction = "east")
 def travel(direction):
+
 	global current_room
 	if direction in current_room.exits():
 		current_room = current_room.exit(direction)
-		print(f'You can go {direction}.')
 		print(current_room)
 
 @when("look")
 def look():
 	print(current_room)
 	print("There are exits to the ",current_room.exits())
+
+@when("use gen")
+@when("use generator")
+
 
 ################
 #MAIN FUNCTION
