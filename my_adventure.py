@@ -8,8 +8,9 @@ from adventurelib import *
 ################
 #DEFINE ROOMS
 ################
+Room.items = Bag()
 
-start_room = Room("You wake in a dark farm, you can only walk forward")
+start_room = Room("You wake in a dark farm. You need to turn on the lights to see. You can only walk forward")
 chicken = Room("You are in a chicken coup, there are 4 exits. You hear spining blades infront of you. Type “look“ to look for exits")
 beet = Room("You are in a beet farm, there are 3 exits. Type “look“ to look for exits")
 potato = Room("You are in a potato farm, there are 3 exits. You hear spining blades to the left of you. Type “look“ to look for exits")
@@ -46,7 +47,9 @@ pig.west = death_gen_3
 
 Item.description = ""
 
-lever_1 = Item
+lever_1 = Item("lever")
+lever_1.description = "You see a lever on the generator"
+
 ################
 #DEFINE BAGS
 ################
@@ -59,6 +62,8 @@ lever_1 = Item
 #DEFINE ANY VARIABLES
 ################
 
+used.lever_1 = False
+inventory = Bag()
 current_room = start_room
 
 ################
@@ -82,6 +87,7 @@ def jump():
 	print("You have jumped")
 
 @when("go DIRECTION")
+@when("walk DIRECTION")
 @when("travel DIRECTION")
 @when("e",direction = "east")
 def travel(direction):
@@ -90,14 +96,24 @@ def travel(direction):
 	if direction in current_room.exits():
 		current_room = current_room.exit(direction)
 		print(current_room)
+	if current_room in [death_chicken,death_gen_1,death_gen_3]:
+		quit()
+
 
 @when("look")
 def look():
 	print(current_room)
 	print("There are exits to the ",current_room.exits())
 
-@when("use gen")
-@when("use generator")
+@when("use ITEM")
+def use(item):
+	if item == lever_1 and current_room == gen_1:
+		print("You pulled the lever on the generator")
+		print("This generator is now running")
+		used.lever_1 = True
+	else:
+		print("You can't use that here")
+
 
 
 ################
