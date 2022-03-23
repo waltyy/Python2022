@@ -125,8 +125,7 @@ def use(item):
 		bridge.south = escape
 	else:
 		print("You can't use that here")
-
-
+		
 @when("type code")
 def escape_pod_win():
 	if note in inventory:

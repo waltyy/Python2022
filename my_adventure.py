@@ -16,9 +16,9 @@ beet = Room("You are in a beet farm, there are 3 exits. Type “look“ to look 
 potato = Room("You are in a potato farm, there are 3 exits. You hear spining blades to the left of you. Type “look“ to look for exits")
 cow = Room("You are in a cow barn, there are 2 exits. Type “look“ to look for exits")
 pig = Room("You are in a pigsty, there are 2 exits. You hear spining blades to the left of you. Type “look“ to look for exits")
-gen_1 = Room("You are the first generator room, there are 2 exits. You hear spining blades infront of you. Type “look“ to look for exits")
-gen_2 = Room("You are the second generator room, there are 2 exits. Type “look“ to look for exits")
-gen_3 = Room("You are the third generator room, there are 2 exits. You hear spining blades infront of you. Type “look“ to look for exits")
+gen_1 = Room("You are the first generator room. You can pull a lever to turn on the generator. There are 2 exits. You hear spining blades infront of you. Type “look“ to look for exits")
+gen_2 = Room("You are the second generator room. You can pull a lever to turn on the generator. There are 2 exits. Type “look“ to look for exits")
+gen_3 = Room("You are the third generator room. You can pull a lever to turn on the generator. There are 2 exits. You hear spining blades infront of you. Type “look“ to look for exits")
 death_chicken = Room("You have run into spinning blades. You have died!")
 death_gen_1 = Room("You have run into spinning blades. You have died!")
 death_gen_3 = Room("You have run into spinning blades. You have died!")
@@ -49,21 +49,32 @@ Item.description = ""
 
 lever_1 = Item("lever")
 lever_1.description = "You see a lever on the generator"
+lever_2 = Item("lever")
+lever_2.description = "You see a lever on the generator"
+lever_3 = Item("lever")
+lever_3.description = "You see a lever on the generator"
 
 ################
 #DEFINE BAGS
 ################
 
+inventory = Bag()
+
 ################
 #ADD ITEMS TO BAGS
 ################
+
+inventory.add(lever_1)
+inventory.add(lever_2)
+inventory.add(lever_3)
 
 ################
 #DEFINE ANY VARIABLES
 ################
 
-used.lever_1 = False
-inventory = Bag()
+used_lever_1 = False
+used_lever_2 = False
+used_lever_3 = False
 current_room = start_room
 
 ################
@@ -106,11 +117,32 @@ def look():
 	print("There are exits to the ",current_room.exits())
 
 @when("use ITEM")
+@when("pull ITEM")
 def use(item):
-	if item == lever_1 and current_room == gen_1:
+	if item in inventory and current_room == gen_1 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
-		used.lever_1 = True
+		used_lever_1 = True
+	else:
+		print("You can't use that here")
+
+@when("use ITEM")
+@when("pull ITEM")
+def use(item):
+	if item in inventory and current_room == gen_2 and item == "lever":
+		print("You pulled the lever on the generator")
+		print("This generator is now running")
+		used_lever_2 = True
+	else:
+		print("You can't use that here")
+
+@when("use ITEM")
+@when("pull ITEM")
+def use(item):
+	if item in inventory and current_room == gen_3 and item == "lever":
+		print("You pulled the lever on the generator")
+		print("This generator is now running")
+		used_lever_3 = True
 	else:
 		print("You can't use that here")
 
