@@ -65,8 +65,7 @@ inventory = Bag()
 ################
 
 inventory.add(lever_1)
-inventory.add(lever_2)
-inventory.add(lever_3)
+
 
 ################
 #DEFINE ANY VARIABLES
@@ -107,6 +106,8 @@ def travel(direction):
 	if direction in current_room.exits():
 		current_room = current_room.exit(direction)
 		print(current_room)
+	else:
+		print("You can't go this way")
 	if current_room in [death_chicken,death_gen_1,death_gen_3]:
 		quit()
 
@@ -123,28 +124,23 @@ def use(item):
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
 		used_lever_1 = True
-	else:
-		print("You can't use that here")
 
-@when("use ITEM")
-@when("pull ITEM")
-def use(item):
-	if item in inventory and current_room == gen_2 and item == "lever":
+	elif item in inventory and current_room == gen_2 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
 		used_lever_2 = True
-	else:
-		print("You can't use that here")
-
-@when("use ITEM")
-@when("pull ITEM")
-def use(item):
-	if item in inventory and current_room == gen_3 and item == "lever":
+	
+	elif item in inventory and current_room == gen_3 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
 		used_lever_3 = True
+
 	else:
-		print("You can't use that here")
+		print("You can't do that here")
+		
+	if used_lever_1 = True and used_lever_2 = True and used_lever_3 = True:
+		print("You have turned on all the generators. The lights start to flicker on. You see a door and run towards it.")
+		quit()
 
 
 
