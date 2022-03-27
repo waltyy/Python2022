@@ -71,9 +71,9 @@ inventory.add(lever_1)
 #DEFINE ANY VARIABLES
 ################
 
-used_lever_1 = False
-used_lever_2 = False
-used_lever_3 = False
+lever_1_used = False
+lever_2_used = False
+lever_3_used = False
 current_room = start_room
 
 ################
@@ -120,26 +120,27 @@ def look():
 @when("use ITEM")
 @when("pull ITEM")
 def use(item):
+	global lever_1_used,lever_2_used,lever_3_used
 	if item in inventory and current_room == gen_1 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
-		used_lever_1 = True
+		lever_1_used = True
 
 	elif item in inventory and current_room == gen_2 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
-		used_lever_2 = True
+		lever_2_used = True
 	
 	elif item in inventory and current_room == gen_3 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
-		used_lever_3 = True
+		lever_3_used = True
 
 	else:
 		print("You can't do that here")
 		
-	if used_lever_1 = True and used_lever_2 = True and used_lever_3 = True:
-		print("You have turned on all the generators. The lights start to flicker on. You see a door and run towards it.")
+	if lever_1_used == True and lever_2_used == True and lever_3_used == True:
+		print("You have turned on all the generators. The lights start to flicker on. You see a door and run towards it. YOU WON!!!!!")
 		quit()
 
 
