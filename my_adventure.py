@@ -86,7 +86,6 @@ current_room = start_room
 def enter_chicken():
 	global current_room
 	if current_room == start_room:
-		print("You are in the chicken coup")
 		current_room = chicken
 	else:
 		print("You cannot go this way")
@@ -114,7 +113,6 @@ def travel(direction):
 
 @when("look")
 def look():
-	print(current_room)
 	print("There are exits to the ",current_room.exits())
 
 @when("use ITEM")
@@ -143,6 +141,28 @@ def use(item):
 		print("You have turned on all the generators. The lights start to flicker on. You see a door and run towards it. YOU WON!!!!!")
 		quit()
 
+@when("egg")
+@when("easter egg")
+@when("secret")
+@when("russia")
+@when("china")
+def egg():
+	print("Ha, imagine. This isn't Misha's game.")
+
+@when("walk")
+@when("run")
+def walk():
+	walk_die = input("Are you sure you want to walk into the great abyss?\n")
+	if walk_die.lower() == "no":
+		print("Sure no problem")
+	else:
+		print("You walked and tripped on a stone. You died lol")
+		quit()
+
+@when("hi")
+@when("hello")
+def hello():
+	print("hi")
 
 
 ################
