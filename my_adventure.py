@@ -10,15 +10,15 @@ from adventurelib import *
 ################
 Room.items = Bag()
 
-start_room = Room("You wake in a dark farm. You need to turn on the lights to see. You can only walk forward")
-chicken = Room("You are in a chicken coup, there are 4 exits. You hear spining blades infront of you. Type “look“ to look for exits")
+start_room = Room("You wake in a dark farm. You need to turn on the generators to power the lights to see. There are a total of three generators to find. You can only walk forward")
+chicken = Room("You are in a chicken coup, there are 4 exits. You hear spining blades to the NORTH of you. Type “look“ to look for exits")
 beet = Room("You are in a beet farm, there are 3 exits. Type “look“ to look for exits")
-potato = Room("You are in a potato farm, there are 3 exits. You hear spining blades to the left of you. Type “look“ to look for exits")
+potato = Room("You are in a potato farm, there are 3 exits. You hear spining blades to the WEST of you. Type “look“ to look for exits")
 cow = Room("You are in a cow barn, there are 2 exits. Type “look“ to look for exits")
-pig = Room("You are in a pigsty, there are 2 exits. You hear spining blades to the left of you. Type “look“ to look for exits")
-gen_1 = Room("You are the first generator room. You can pull a lever to turn on the generator. There are 2 exits. You hear spining blades infront of you. Type “look“ to look for exits")
-gen_2 = Room("You are the second generator room. You can pull a lever to turn on the generator. There are 2 exits. Type “look“ to look for exits")
-gen_3 = Room("You are the third generator room. You can pull a lever to turn on the generator. There are 2 exits. You hear spining blades infront of you. Type “look“ to look for exits")
+pig = Room("You are in a pigsty, there are 2 exits. You hear spining blades to the WEST of you. Type “look“ to look for exits")
+gen_1 = Room("You are in the first generator room. You can pull a lever to turn on the generator. There are 2 exits. You hear spining blades NORTH of you. Type “look“ to look for exits")
+gen_2 = Room("You are in the second generator room. You can pull a lever to turn on the generator. There are 2 exits. Type “look“ to look for exits")
+gen_3 = Room("You are in the third generator room. You can pull a lever to turn on the generator. There are 2 exits. You hear spining blades NORTH of you. Type “look“ to look for exits")
 death_chicken = Room("You have run into spinning blades. You have died!")
 death_gen_1 = Room("You have run into spinning blades. You have died!")
 death_gen_3 = Room("You have run into spinning blades. You have died!")
@@ -95,6 +95,11 @@ def enter_chicken():
 def jump():
 	print("You have jumped")
 
+@when("turn on lights")
+@when("turn on lights")
+def lights():
+	print("It is too dark to see generators")
+
 @when("go DIRECTION")
 @when("walk DIRECTION")
 @when("travel DIRECTION")
@@ -122,16 +127,19 @@ def use(item):
 	if item in inventory and current_room == gen_1 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
+		gen_1.descrption = "This generator is currently running"
 		lever_1_used = True
 
 	elif item in inventory and current_room == gen_2 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
+		gen_2.descrption = "This generator is currently running"
 		lever_2_used = True
 	
 	elif item in inventory and current_room == gen_3 and item == "lever":
 		print("You pulled the lever on the generator")
 		print("This generator is now running")
+		gen_3.descrption = "This generator is currently running"
 		lever_3_used = True
 
 	else:
