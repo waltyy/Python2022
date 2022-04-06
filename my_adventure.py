@@ -91,12 +91,16 @@ def enter_chicken():
 		print("You cannot go this way")
 	print(current_room)
 
+@when("inventory")
+def inven():
+	print("You don't have an inventory")
+
 @when("jump")
 def jump():
 	print("You have jumped")
 
 @when("turn on lights")
-@when("turn on lights")
+@when("turn on light")
 def lights():
 	print("It is too dark to see generators")
 
@@ -114,6 +118,13 @@ def travel(direction):
 		print("You can't go this way")
 	if current_room in [death_chicken,death_gen_1,death_gen_3]:
 		quit()
+
+	if lever_1_used == True and current_room == gen_1:
+		print("This generator is currently running")
+	elif lever_2_used == True and current_room == gen_2:
+		print("This generator is currently running")
+	elif lever_3_used == True and current_room == gen_3:
+		print("This generator is currently running")
 
 
 @when("look")
@@ -144,7 +155,7 @@ def use(item):
 
 	else:
 		print("You can't do that here")
-		
+
 	if lever_1_used == True and lever_2_used == True and lever_3_used == True:
 		print("You have turned on all the generators. The lights start to flicker on. You see a door and run towards it. YOU WON!!!!!")
 		quit()
@@ -161,7 +172,7 @@ def egg():
 @when("run")
 def walk():
 	walk_die = input("Are you sure you want to walk into the great abyss?\n")
-	if walk_die.lower() == "no":
+	if walk_die.lower() == "no" or "nope" or "nah" or "maybe not":
 		print("Sure no problem")
 	else:
 		print("You walked and tripped on a stone. You died lol")
@@ -172,6 +183,12 @@ def walk():
 def hello():
 	print("hi")
 
+@when("die")
+@when("quit")
+@when("leave")
+def leave():
+	print("Sure")
+	quit()
 
 ################
 #MAIN FUNCTION
