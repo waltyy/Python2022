@@ -165,6 +165,8 @@ def use(item):
 @when("secret")
 @when("russia")
 @when("china")
+@when("ukraine")
+@when("racist")
 def egg():
 	print("Ha, imagine. This isn't Misha's game.")
 
